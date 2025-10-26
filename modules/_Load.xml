@@ -1,0 +1,17 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Script File="API.lua" />
+    <Script File="Aura.lua" />
+    <Script File="C_AddOns.lua" />
+    <Script File="C_Timer.lua" />
+    <Script File="CombatLog.lua" />
+    <Script File="Constants.lua" />
+    <Script File="Cooldown.lua" />
+    <Script File="EventRegistry.lua" />
+    <Script File="EventUtil.lua" />
+    <Script File="GlobalStrings.lua" />
+    <Script File="Math.lua" />
+    <Script File="Spell.lua" />
+    <Script File="Table.lua" />
+    <Include File="Template.xml" />
+</Ui>

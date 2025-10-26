@@ -1,0 +1,7 @@
+DEFAULT = "Default"
+ENABLE = "Enable"
+NONE = "None"
+PREVIEW = "Preview"
+DISPLAY = "Display"
+REMOVE = "Remove"
+COLOR = "Color"
