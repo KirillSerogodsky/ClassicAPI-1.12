@@ -2,23 +2,41 @@ local UnitDebuff = UnitDebuff
 local UnitBuff = UnitBuff
 local SpellInfo = SpellInfo
 
-function C_UnitDebuff(unit, index, showDispellable)
-    local texture, applications, type, id = UnitDebuff(unit, index, showDispellable)
-    local name, rank, _, minrange, maxrange = SpellInfo(id)
+-- @param unitId, index, filter?
+-- @return name, icon, count, dispelType, duration, expirationTime, source, 
+-- isStealable, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, 
+-- castByPlayer, nameplateShowAll, timeMod, ...
+C_UnitDebuff = function(unit, index, filter)
+    local texture, applications, type, spellID = UnitDebuff(unit, index)
+
+    if not spellID then return end
+
+    local name = SpellInfo(spellID)
     local duration, expire = 0, 0
     local caster, steal, consolidate = nil, nil, nil
 
-    return name, texture, applications, type, duration, expire, caster, steal, consolidate, id
+    return name, texture, applications, type, duration, expire, caster, steal, consolidate, spellID
 end
 
-function C_UnitBuff(unit, index, showCastable)
-    local texture, applications, id = UnitBuff(unit, index, showCastable)
-    local name, rank, _, minrange, maxrange = SpellInfo(id)
+-- @param unitId, index, filter?
+-- @return name, icon, count, dispelType, duration, expirationTime, source, 
+-- isStealable, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, 
+-- castByPlayer, nameplateShowAll, timeMod, ...
+C_UnitBuff = function(unit, index, filter)
+    local texture, applications, spellID = UnitBuff(unit, index)
+
+    if not spellID then return end
+
+    local name = SpellInfo(spellID)
     local duration, expire = 0, 0
     local type, caster, steal, consolidate = nil, nil, nil, nil
 
-    return name, texture, applications, type, duration, expire, caster, steal, consolidate, id
+    return name, texture, applications, type, duration, expire, caster, steal, consolidate, spellID
 end
 
-function UnitAura()
+-- @param unitId, index, filter?
+-- @return name, icon, count, dispelType, duration, expirationTime, source, 
+-- isStealable, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, 
+-- castByPlayer, nameplateShowAll, timeMod, ...
+UnitAura = function(unit, index, filter)
 end

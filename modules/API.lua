@@ -34,7 +34,7 @@ strtrim = function(str)
     return trimmed
 end
 
-function strjoin(delimiter, ...)
+strjoin = function(delimiter, ...)
     local result = ""
     for i = 1, getn(arg) do
         if arg[i] ~= nil then
