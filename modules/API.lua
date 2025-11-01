@@ -46,3 +46,32 @@ strjoin = function(delimiter, ...)
     end
     return result
 end
+
+IsInRaid = function()
+    return false
+end
+
+IsInGroup = function()
+    return false
+end
+
+IsInGuild = function()
+    return false
+end
+
+UnitIsPossessed = function(unit)
+    return false
+end
+
+local playerName = UnitName("player")
+UnitIsUnit = function(unit1, unit2)
+    if unit1 == "player" then
+        return unit2 == playerName
+    end
+
+    return unit1 == unit2
+end
+
+GetServerTime = function()
+	return GetTime()
+end

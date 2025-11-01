@@ -23,3 +23,21 @@ end
 CooldownFrame_Clear = function(frame)
 	frame:Hide()
 end
+
+SetCooldown = function(self, start, duration)
+	CooldownFrame_SetTimer(self, start, duration, 1)
+end
+
+SetSwipeColor = function(self, r, g, b, a)
+	if (a) then self:SetAlpha(a) end
+end
+
+GetCooldownTimes = function(self)
+	local start = self.start
+	local duration = self.duration
+	if (start and duration and (GetTime() - (start + duration)) >= 0) then
+		start = nil
+		duration = nil
+	end
+	return start or 0, duration or 0
+end

@@ -4,8 +4,12 @@ local GetSpellTexture = GetSpellTexture
 -- @param spellID or spellName or spellLink
 -- @return name, rank, icon, castTime, minRange, maxRange 
 GetSpellInfo = function(spellID)
-    local name = SpellInfo(spellID)
-    return name or "spell_"..spellID
+    local name, rank, icon, minRange, maxRange = SpellInfo(spellID)
+    return name or "spell_"..spellID, rank, icon, 0, minRange, maxRange
+end
+
+GetSpellDescription = function(spellID)
+    return ""
 end
 
 -- @param spellID or spellName, bookType
@@ -39,10 +43,10 @@ C_GetSpellCooldown = function(spellID, bookType)
     return GetTime(), 10, true, 10
 end
 
-Spell = {}
-Spell.cache = {}
+C_Spell = {}
+C_Spell.cache = {}
 
-Spell.CreateFromspellID = function(spellID)
+C_Spell.CreateFromspellID = function(spellID)
     if not self.cache[spellID] then
         local spell = {}
         setmetatable(spell, { __index = Spell })
@@ -52,6 +56,10 @@ Spell.CreateFromspellID = function(spellID)
     return self.cache[spellID]
 end
 
-Spell.GetSpellDescription = function(self)
-    return ""
+C_Spell.GetSpellTexture = function(spellID)
+    return C_GetSpellTexture(spellID)
+end
+
+C_Spell.GetSpellDescription = function(spellID)
+    return GetSpellDescription(spellID)
 end

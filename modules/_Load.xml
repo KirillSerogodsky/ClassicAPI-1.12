@@ -3,6 +3,7 @@
     <Script File="API.lua" />
     <Script File="Aura.lua" />
     <Script File="C_AddOns.lua" />
+    <Script File="C_PvP.lua" />
     <Script File="C_Timer.lua" />
     <Script File="CombatLog.lua" />
     <Script File="Constants.lua" />

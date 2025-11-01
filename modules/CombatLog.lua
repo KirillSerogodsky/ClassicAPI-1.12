@@ -1,8 +1,3 @@
-COMBATLOG_OBJECT_AFFILIATION_MINE = tonumber("00000001", 16)
-COMBATLOG_OBJECT_REACTION_FRIENDLY = tonumber("00000010", 16)
-COMBATLOG_OBJECT_CONTROL_PLAYER = tonumber("00000100", 16)
-COMBATLOG_OBJECT_TYPE_PLAYER = tonumber("00000400", 16)
-
 CombatLogGetCurrentEventInfo = function()
     local event, text = string.gsub(arg1, "CHAT_MSG_SPELL_", ""), arg2
 
@@ -28,8 +23,8 @@ CombatLogGetCurrentEventInfo = function()
         local _, _, spell = string.find(text, "You gain (.+)%.")
         eventType = "SPELL_AURA_APPLIED"
         srcGUID = UnitGUID("player")
-        srcName = playerName
-        srcFlags = COMBATLOG_OBJECT_REACTION_FRIENDLY
+        srcName = UnitName("player")
+        srcFlags = COMBATLOG_OBJECT_CONTROL_PLAYER
         dstGUID = srcGUID
         dstName = srcName
         dstFlags = COMBATLOG_OBJECT_TYPE_PLAYER
@@ -40,8 +35,8 @@ CombatLogGetCurrentEventInfo = function()
         local _, _, spell = string.find(text, "You are afflicted by (.+)%.")
         eventType = "SPELL_AURA_APPLIED"
         srcGUID = UnitGUID("player")
-        srcName = playerName
-        srcFlags = COMBATLOG_OBJECT_REACTION_FRIENDLY
+        srcName = UnitName("player")
+        srcFlags = COMBATLOG_OBJECT_CONTROL_PLAYER
         dstGUID = srcGUID
         dstName = srcName
         dstFlags = COMBATLOG_OBJECT_TYPE_PLAYER
@@ -123,7 +118,7 @@ CombatLogGetCurrentEventInfo = function()
         local _, _, spell = string.find(text, "(.+) fades from you.")
         eventType = "SPELL_AURA_REMOVED"
         srcGUID = UnitGUID("player")
-        srcName = playerName
+        srcName = UnitName("player")
         srcFlags = COMBATLOG_OBJECT_TYPE_PLAYER
         dstGUID = srcGUID
         dstName = srcName
@@ -165,6 +160,8 @@ CombatLogGetCurrentEventInfo = function()
         dstFlags = COMBATLOG_OBJECT_REACTION_FRIENDLY
         auraType = "DEBUFF"
         spellName = spell
+    elseif event == "" then
+        -- SPELL_CAST_SUCCESS
     end
 
     if spellName ~= nil then

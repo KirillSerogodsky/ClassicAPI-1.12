@@ -1,3 +1,46 @@
 WOW_PROJECT_ID = 2
 WOW_PROJECT_ID_RCE = 2
 WOW_PROJECT_CLASSIC = 2
+
+CLASS_SORT_ORDER = {
+    "WARRIOR",
+	"MAGE",
+	"ROGUE",
+	"DRUID",
+	"HUNTER",
+	"SHAMAN",
+	"PRIEST",
+	"WARLOCK",
+	"PALADIN"
+}
+MAX_CLASSES = table.getn(CLASS_SORT_ORDER)
+
+LOCALIZED_CLASS_NAMES_MALE = {
+    ["WARRIOR"] = "Warrior",
+    ["MAGE"]    = "Mage",
+    ["ROGUE"]   = "Rogue",
+    ["DRUID"]   = "Druid",
+    ["HUNTER"]  = "Hunter",
+    ["SHAMAN"]  = "Shaman",
+    ["PRIEST"]  = "Priest",
+    ["WARLOCK"] = "Warlock",
+    ["PALADIN"] = "Paladin"
+}
+
+CLASS_ICON_TCOORDS = {
+	["WARRIOR"]	= {0, 0.25, 0, 0.25},
+	["MAGE"]	= {0.25, 0.49609375, 0, 0.25},
+	["ROGUE"]	= {0.49609375, 0.7421875, 0, 0.25},
+	["DRUID"]	= {0.7421875, 0.98828125, 0, 0.25},
+	["HUNTER"]	= {0, 0.25, 0.25, 0.5},
+	["SHAMAN"]	= {0.25, 0.49609375, 0.25, 0.5},
+	["PRIEST"]	= {0.49609375, 0.7421875, 0.25, 0.5},
+	["WARLOCK"]	= {0.7421875, 0.98828125, 0.25, 0.5},
+	["PALADIN"]	= {0, 0.25, 0.5, 0.75}
+}
+
+COMBATLOG_OBJECT_AFFILIATION_MINE = tonumber("00000001", 16)
+COMBATLOG_OBJECT_REACTION_FRIENDLY = tonumber("00000010", 16)
+COMBATLOG_OBJECT_CONTROL_PLAYER = tonumber("00000100", 16)
+COMBATLOG_OBJECT_TYPE_PLAYER = tonumber("00000400", 16)
+COMBATLOG_OBJECT_REACTION_HOSTILE = tonumber("00000099", 16)
